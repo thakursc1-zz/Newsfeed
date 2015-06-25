@@ -66,9 +66,9 @@ feature_sets = [(article_features(article),topic) for (article,topic) in article
 
 print "Featuresets are complete"
 print "Distributing them as:"
-print "Test set                : 500 aricles\n"
+print "Test set                : 205 aricles\n"
 print "Train developer test set: 100 article\n"
-print "Train set primary       : 900 articles\n"
+print "Train set primary       : 1200 articles\n"
 
 train_set , train_test_set = feature_sets[:100],feature_sets[100:1300]
 test_set = feature_sets[1300:]
