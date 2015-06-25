@@ -41,9 +41,9 @@ print "\n",len(all_words)
 
 
 print "Calculating Frequency Distribution"
-print "Selecting top 5000 Words"
+print "Selecting top 800 Words"
 all_words = nltk.FreqDist(w.lower() for w in all_words)
-word_features = list(all_words)[:5000]
+word_features = list(all_words)[:12000]
 print len(word_features)
 
 
@@ -70,15 +70,15 @@ print "Test set                : 500 aricles\n"
 print "Train developer test set: 100 article\n"
 print "Train set primary       : 900 articles\n"
 
-test_set = feature_sets[:500]
-train_set , train_test_set = feature_sets[500:601],feature_sets[601:1500]
+train_set , train_test_set = feature_sets[:100],feature_sets[100:1300]
+test_set = feature_sets[1300:]
 
 print "Distribution Complete"
 
 print "type(train_set[0][0])",type(train_set[0][0])
 
 
-
-
+classifier = nltk.NaiveBayesClassifier.train(train_set)
+print(nltk.classify.accuracy(classifier, train_test_set))
 
 
