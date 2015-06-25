@@ -44,6 +44,8 @@ print "Calculating Frequency Distribution"
 print "Selecting top 5000 Words"
 all_words = nltk.FreqDist(w.lower() for w in all_words)
 word_features = list(all_words)[:5000]
+print len(word_features)
+
 
 
 #############Feature Extractor function##################
@@ -53,13 +55,14 @@ def article_features(article):
     features ={}
     for word in word_features:
         features['contains({})'.format(word)] = (word in article)
+    return features
 ##########################################################
 
 
-print "Extracting Features of all 1500 articles....."
+print "\n\nExtracting Features of all 1500 articles....."
 print "\n"
-
-featuresets = [(article_features(article),topic) for (article,topic) in articles]
+print "Type(articles)",type(articles[0])
+feature_sets = [(article_features(article),topic) for (article,topic) in articles]
 
 print "Featuresets are complete"
 print "Distributing them as:"
@@ -67,10 +70,13 @@ print "Test set                : 500 aricles\n"
 print "Train developer test set: 100 article\n"
 print "Train set primary       : 900 articles\n"
 
-test_set = featuresets[:500]
-tain_set , train_test_set = featuresets[500:601],featuresets[601:1500]
+test_set = feature_sets[:500]
+train_set , train_test_set = feature_sets[500:601],feature_sets[601:1500]
 
 print "Distribution Complete"
+
+print "type(train_set[0][0])",type(train_set[0][0])
+
 
 
 
